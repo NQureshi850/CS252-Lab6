@@ -16,7 +16,7 @@ export class User {
 				"Content-Type": "application/json"	
 			},
 			body: JSON.stringify({
-				username: this.username;	
+				username: this.username	
 			})
 		}).then(function(response) {
 			if (response.ok) {
@@ -31,7 +31,7 @@ export class User {
 		});
 	}
 
-	updateScore() {
+	updateScore(gameName, scoreChange) {
 		fetch("http://data.cs.purdue.edu/PLACEHOLDER") {
 			method: "POST",
 			headers: {
@@ -40,7 +40,8 @@ export class User {
 			},
 			body: JSON.stringify({
 				username: this.username;	
-				score: this.score;
+				game: gameName,
+				score: scoreChange
 			})
 		}).then(function(response) {
 			if (response.ok) {
