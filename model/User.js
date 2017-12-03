@@ -30,4 +30,23 @@ export class User {
 			}
 		});
 	}
+
+	updateScore() {
+		fetch("http://data.cs.purdue.edu/PLACEHOLDER") {
+			method: "POST",
+			headers: {
+				"Accept": "application/json",
+				"Content-Type": "application/json"	
+			},
+			body: JSON.stringify({
+				username: this.username;	
+				score: this.score;
+			})
+		}).then(function(response) {
+			if (response.ok) {
+				return response.json();
+			}
+			throw new Error("Network response was not ok");
+		});
+	}
 }
