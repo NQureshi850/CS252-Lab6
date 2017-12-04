@@ -13,14 +13,19 @@ class Game {
 
 	end(winner, loser) {
 		console.log("End Game");
-		console.log(winner);
-		console.log(loser);
-		if (winner) {
-			console.log("in");
-			winner.updateScore(this.name, this.scorePenalty);
-			loser.updateScore(this.name, -this.scorePenalty);
+		console.log("winner: " + winner.username);
+		console.log("loser: " + loser.username);
+		if (winner && loser) 
+		{
+			if (winner instanceof User)
+			{
+				winner.updateScore(this.name, this.scorePenalty);
+			}
+			if (loser instanceof User)
+			{
+				loser.updateScore(this.name, -this.scorePenalty);
+			}	
 		}
-		console.log("out");
 	}
 
 
