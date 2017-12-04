@@ -1,15 +1,14 @@
-
-export class User {
+class User {
 	constructor(username) {
 		this.score = 0;
 		this.username = username;
 		this.getUserData();
-
-
+		console.log("Player Created");
+		console.log(this);
 	}
 
 	getUserData() {
-		fetch("http://data.cs.purdue.edu/PLACEHOLDER") {
+		fetch("http://data.cs.purdue.edu/PLACEHOLDER", {
 			method: "POST",
 			headers: {
 				"Accept": "application/json",
@@ -32,14 +31,14 @@ export class User {
 	}
 
 	updateScore(gameName, scoreChange) {
-		fetch("http://data.cs.purdue.edu/PLACEHOLDER") {
+		fetch("http://data.cs.purdue.edu/PLACEHOLDER", {
 			method: "POST",
 			headers: {
 				"Accept": "application/json",
 				"Content-Type": "application/json"	
 			},
 			body: JSON.stringify({
-				username: this.username;	
+				username: this.username,	
 				game: gameName,
 				score: scoreChange
 			})
