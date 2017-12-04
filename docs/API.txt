@@ -1,0 +1,21 @@
+/getUser POST
+{
+	username: "",	
+}
+
+response:
+{
+	score: ###,
+}
+
+
+
+/updateScore POST
+{
+	username: "",
+	game: "",
+	score: ""
+}
+
+response:
+OK
