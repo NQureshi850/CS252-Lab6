@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link type="text/css" rel="stylesheet" href="BlackJackCSS.css">
+    <script src="BlackJackJS.js"></script>
+  </head>
+  <body>
+    <h>Black Jack</h>
+    <p>Special Note: To prevent card counting, this game is played with an infinite deck of cards, so please do not be alarmed when the same card appears multiple times</p>
+    <button id="Start" onclick="Start()">Start</button>
+    <div class="group">
+      <div class="mLabel">Amount of Money you have:</div>
+      <div id="money">0</div>
+    </div>
+    <div class="group">
+      <div class="vLabel">Dealer's card amount:</div>
+      <div class="value" id="dealerCA">0</div>
+    </div>
+    <div class="group">
+      <div class="dealer"></div>
+      <div class="dealer"></div>
+      <div class="dealer"></div>
+      <div class="dealer"></div>
+      <div class="dealer"></div>
+    </div>
+    <div class="group">
+      <div class="player"></div>
+      <div class="player"></div>
+      <div class="player"></div>
+      <div class="player"></div>
+      <div class="player"></div>
+    </div>
+    <div class="group">
+      <div class="vLabel">Your card amount:</div>
+      <div class="value" id="playerCA">0</div>
+    </div>
+    <div class="group">
+      <button onclick="Hit()">Hit</button>
+      <button onclick="Stop()">Stop</button>
+    </div>
+  </body>
+

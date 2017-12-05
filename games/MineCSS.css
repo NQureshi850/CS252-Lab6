@@ -1,0 +1,93 @@
+#title{
+  font-size: 50px;
+  color: blue;
+  display: block;
+  text-align: center;
+}
+
+.startButton{
+  display: block;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 20px;
+  font-family: serif;
+}
+
+.block{
+  background-color: white;
+  height: 50px;
+  width: 50px;
+  border-color: black;
+  border-width: 3px;
+  border-style: solid;
+  background-size: 100%;
+}
+
+.TB{
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.TR{
+  border-color: red;
+  border-style: dashed;
+  border-width: 1px;
+  margin: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0px;
+}
+
+.TD{
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0px;
+}
+
+.group{
+  text-align: center;
+  margin: auto;
+  margin-bottom: 5px;
+}
+
+.sLabel{
+  background-color: white;
+  height: 25px;
+  width: 250px;
+  border-color: red;
+  border-width: 3px;
+  border-style: solid;
+  background-size: 100%;
+  display:inline-block;
+  text-align:center;
+  font-family: serif;
+  font-size: 20px;
+  margin: auto;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+#score{
+  background-color: white;
+  height: 25px;
+  width: 50px;
+  border-color red;
+  border-width: 3px;
+  border-style: solid;
+  background-size: 100%;
+  display:block;
+  text-align:center;
+  font-family: serif;
+  font-size: 20px;
+  margin: auto;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  display:inline-block;
+}
+
+
+
