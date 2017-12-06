@@ -5,7 +5,7 @@ class Game {
 		this.players = [];
 	}
 
-	addUser() {
+	addPlayer() {
 		var name = prompt("Enter your username");
 		var player = new User(name);
 		this.players[this.playerCount] = player;	
