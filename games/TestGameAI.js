@@ -2,7 +2,7 @@ class TestGameAI extends Game {
 	constructor() {
 		super("TestGameAI");		
 		this.scorePenalty = 100; 
-		this.player1 = this.addUser();
+		this.player1 = this.addPlayer();
 		this.ai = this.addAI();
 	}
 

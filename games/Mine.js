@@ -9,6 +9,9 @@ var size = 9;
 //default 10
 var mine = 10;
 
+//Number of mine images loaded
+var minesLoaded = mine;
+
 //count how many spots have been open
 var openCounter = 0;
 
@@ -26,18 +29,21 @@ class MineJS extends Game{
 
 	constructor(player1, player2){
 		super("Mine");
-		player1 = this.addPlayer();
-		score = player1.score;
+		$( document ).ready(function() {
+			player1 = this.addPlayer();
+			score = player1.score;
+		}.bind(this));
 	}
 
 	//starting the game and preparing the board
 	Start(){
-	  openCounter = 0;
-	  gameOver = false;
-	  this.FillBoard();
-	  this.CoverBoard();
-	  this.SetMine();
-	  this.SetBoard();
+		openCounter = 0;
+		minesLoaded = 0;
+		gameOver = false;
+		this.FillBoard();
+		this.CoverBoard();
+		this.SetMine();
+		this.SetBoard();
 	  //Print();
 	}
 
@@ -63,10 +69,19 @@ class MineJS extends Game{
 
 	//then set some spaces into mines: -1
 	SetMine(){
+	  for (var i = 0; i < size; i++) {
+		for (var j = 0; j < size; j++) {
+			//console.log(board[i][j] == -5);
+			var x = Math.floor(Math.random()*size);
+			var y = Math.floor(Math.random()*size);
+		
+			console.log(board[x][y]);
+		}
+	  }
 	  var i = 0;
 	  while(i<mine){
-		var x = Math.round(Math.random()*size-1);
-		var y = Math.round(Math.random()*size-1);
+		var x = Math.floor(Math.random()*size);
+		var y = Math.floor(Math.random()*size);
 		if(board[x][y] == -5){
 		  board[x][y] = -1;
 		  i++;
@@ -272,15 +287,22 @@ class MineJS extends Game{
 	  }
 	}
 
+	MineImageLoaded(finishedLoading){
+		minesLoaded++;
+		if (minesLoaded == mine) {
+			finishedLoading();
+		}
+	}
+
 	//end the game and tell the player he/she lost
 	EndGameLose(){
 	  //need to combine with GUI
 	  gameOver = true;
 	  score--;
 	  this.decreasePlayerScore(player1, -1);
-	  alert("You lost! Better luck next time.");
-	  document.getElementByID("score").innerHTML = score;
+	  document.getElementById("score").innerHTML = score;
 	  var z = document.body.querySelectorAll(".block");  
+	  minesLoaded = 0;
 	  for(var c = 0; c < size; c++){
 		for(var co = 0; co < size; co++){
 		  var i = c*size + co;
@@ -289,6 +311,15 @@ class MineJS extends Game{
 		  }
 		  else{
 			z[i].style.backgroundImage = "url('http://cdn8.staztic.com/app/i/4449/4449536/mine-rollr-hd-the-endless-minesweeper-1-l-124x124.png')";
+			var image = new Image();
+			image.onload = function() 
+			{ 
+				this.MineImageLoaded( function()
+				{ 
+					alert("You lost! Better luck next time."); 
+				}) 
+			}.bind(this);
+			image.src = "http://cdn8.staztic.com/app/i/4449/4449536/mine-rollr-hd-the-endless-minesweeper-1-l-124x124.png";
 		  }
 		}
 	  }
@@ -298,17 +329,26 @@ class MineJS extends Game{
 	//end the game and tell the player that he/she won
 	EndGameWin(){
 	  //need to combine with GUI
-	  if(this.GameOverWin()&&!gameOver){
+	  if(this.GameOverWin() && !gameOver){
 		score++;
 		this.increasePlayerScore(player1, 1);
-		alert("You won. congratulations!");
-		document.getElementByID("score").innerHTML = score;
+		document.getElementById("score").innerHTML = score;
 		var z = document.body.querySelectorAll(".block");  
+		minesLoaded = 0;
 		for(var c = 0; c < size; c++){
 		  for(var co = 0; co < size; co++){
 			var i = c*size + co;
 			if(board[c][co] == -1){
 			  z[i].style.backgroundImage = "url('http://cdn8.staztic.com/app/i/4449/4449536/mine-rollr-hd-the-endless-minesweeper-1-l-124x124.png')";
+			  var image = new Image();
+		  	  image.onload = function() 
+			  { 
+			    this.MineImageLoaded( function()
+				  { 
+					alert("You won. congratulations!"); 
+				  }) 
+			  }.bind(this);
+			  image.src = "http://cdn8.staztic.com/app/i/4449/4449536/mine-rollr-hd-the-endless-minesweeper-1-l-124x124.png";
 			}
 		  }
 		}
@@ -316,4 +356,3 @@ class MineJS extends Game{
 	  }
 	}
 }
-var game = new MineJS();

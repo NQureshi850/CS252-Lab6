@@ -3,11 +3,14 @@
   <head>
     <link type="text/css" rel="stylesheet" href="BlackJack.css">
     <script src="BlackJack.js"></script>
+	<script>
+		var game = new BlackJack();
+	</script>
   </head>
   <body>
     <h>Black Jack</h>
     <p>Special Note: To prevent card counting, this game is played with an infinite deck of cards, so please do not be alarmed when the same card appears multiple times</p>
-    <button id="Start" onclick="Start()">Start</button>
+    <button id="Start" onclick="game.Start()">Start</button>
     <div class="group">
       <div class="mLabel">Amount of Money you have:</div>
       <div id="money">0</div>
@@ -35,8 +38,8 @@
       <div class="value" id="playerCA">0</div>
     </div>
     <div class="group">
-      <button onclick="Hit()">Hit</button>
-      <button onclick="Stop()">Stop</button>
+      <button onclick="game.Hit()">Hit</button>
+      <button onclick="game.Stop()">Stop</button>
     </div>
   </body>
 
