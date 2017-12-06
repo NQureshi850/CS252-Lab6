@@ -2,41 +2,98 @@
 <html>
 	<head>
 		<title>Game Host</title>
+		<link href="https://fonts.googleapis.com/css?family=Raleway|Roboto|Spectral+SC|Ubuntu" rel="stylesheet">
 		<link type="text/css" rel="stylesheet" href="styles.css">
 	</head>
 	<body>
 	<hm>Game Host</hm>
 	
-	<h>List of Games</h>
-	
-	<ul>
-		<li><a href="./games/BlackJack.html">Black Jack</a>
-		<li><a href="./games/Mine.html">Mine Sweeper</a>
-		<li><a href="./games/testGameAI.html">Number Calling Game</a>
-		<li><a href=""> </a>
-		<li><a href=""> </a>
-		<li><a href=""> </a>
-		<li><a href=""> </a>
-		<li><a href=""> </a>
-		<li><a href=""> </a>
-		<li>...and more to come
-	</ul>
-	<p></p>
-	<p></p>
+	<div class="container">
+		<h class="section-header">List of Games</h>	
 
-	<h>High Score Boards</h>
-	<ul>
-		<li><a href="./games/BlackJackScore.html">Black Jack</a>
-		<li><a href="./games/MineScore.html">Mine Sweeper</a>
-		<li><a href="./games/testGameAIScore.html">Number Calling Game</a>
-		<li><a href=""> </a>
-		<li><a href=""> </a>
-		<li><a href=""> </a>
-		<li><a href=""> </a>
-		<li><a href=""> </a>
-		<li><a href=""> </a>
-	</ul>	
-	
+		<div class="game-container">
+			<div class="auto">
+				<div class="min-margin">
+					<div class="game-thumbnail">
+						<a href="./games/BlackJack.html">
+							<div class="game-title-div">
+								<h class="game-title">Black Jack</h>
+							</div>
+							<img class="game-image" src="https://cdn13-a.imagestore.lv/static/site10/400x304-blackjack-classic-black.jpg">
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="auto">
+				<div class="min-margin">
+					<div class="game-thumbnail">
+						<a href="./games/Mine.html">
+							<div class="game-title-div">
+								<h class="game-title">Mine Sweeper</h>
+							</div>
+							<img class="game-image" src="https://is5-ssl.mzstatic.com/image/thumb/Purple7/v4/f4/30/08/f430086e-ce81-0bdc-e592-79a0c5429519/source/512x512bb.jpg">
+						</a>
+						
+					</div>
+				</div>
+			</div>
+
+			<div class="auto">
+				<div class="min-margin">
+					<div class="game-thumbnail">
+						<a href="./games/TestGameAI.html">
+							<div class="game-title-div">
+								<h class="game-title">Number Callout</h>
+							</div>
+							<img class="game-image" src="https://i.kinja-img.com/gawker-media/image/upload/s--hJGX0OKT--/c_scale,fl_progressive,q_80,w_800/18hgjti706ptljpg.jpg">
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="auto">
+				<div class="min-margin">
+					<div class="game-thumbnail">
+						<a href="./games/placeholder.html">
+							<div class="game-title-div">
+								<h class="game-title">Your Game Here!</h>
+							</div>
+							<img class="game-image" src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Twemoji2_2795.svg">
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<ul>
+			<li><a href="./games/BlackJack.html">Black Jack</a>
+			<li><a href="./games/Mine.html">Mine Sweeper</a>
+			<li><a href="./games/testGameAI.html">Number Calling Game</a>
+			<li><a href=""> </a>
+			<li><a href=""> </a>
+			<li><a href=""> </a>
+			<li><a href=""> </a>
+			<li><a href=""> </a>
+			<li><a href=""> </a>
+			<li>...and more to come
+		</ul>
+	</div>
+
+	<div class="container">
+		<h>High Score Boards</h>
+		<ul>
+			<li><a href="./games/BlackJackScore.html">Black Jack</a>
+			<li><a href="./games/MineScore.html">Mine Sweeper</a>
+			<li><a href="./games/testGameAIScore.html">Number Calling Game</a>
+			<li><a href=""> </a>
+			<li><a href=""> </a>
+			<li><a href=""> </a>
+			<li><a href=""> </a>
+			<li><a href=""> </a>
+			<li><a href=""> </a>
+		</ul>	
+	</div>
 	
 	<hs>Submit Your Game</hs>
 	<p>Make your javascript class extend the following Game class: <a href="./model/Game.js">Game class</a></p>

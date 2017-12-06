@@ -5,6 +5,7 @@ p{
 
 hm{
   font-size: 50px;
+  font-family: "Ubuntu", sans-serif;
   color: white;
   background-color: red;
   display: block;
@@ -14,6 +15,7 @@ hm{
 
 h{
   font-size: 30px;
+  font-family: "Roboto", sans-serif;
   color: black;
   display: block;
 }
@@ -22,4 +24,59 @@ hs{
   font-size: 25px;
   color: black;
   display: block;
+}
+
+.section-header{
+	text-align: center;
+}
+
+.game-container{
+	width: 100%;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+}
+
+.game-thumbnail{
+	display: inline-block;
+	float: left;
+	width: 300px;
+	min-width: 300px;
+	height: 300px;
+	border: 2px solid red;
+	overflow: hidden;
+	border-radius: 20px;
+	margin: 25px auto;
+}
+
+.min-margin{
+	margin: 0 25px;
+}
+
+.auto{
+	margin: 0 auto;
+}
+
+.game-thumbnail a{
+	text-decoration: none;
+}
+
+.game-title-div{
+	height: 15%;
+	background-color: rgba(185, 25, 145, 1);
+
+}
+
+.game-title{
+	font-family: "Spectral SC", serif;
+	font-size: 20px;
+	text-align: center;
+	width: 100%;
+	padding-top: 10px;
+	color: rgba(248, 248, 248, 1);
+}
+
+.game-image{
+	width: 100%;
+	height: 85%;
 }
