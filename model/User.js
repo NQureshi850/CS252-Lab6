@@ -1,14 +1,14 @@
 class User {
-	constructor(username) {
+	constructor(username, gameName) {
 		this.score = 0;
 		this.username = username;
 		this.getUserData = this.getUserData.bind(this);
-		this.getUserData();
+		this.getUserData(gameName);
 		console.log("Player Created");
 		console.log(this);
 	}
 
-	getUserData() {
+	getUserData(game) {
 		fetch("http://localhost:5001/getUser", {
 			method: "POST",
 			headers: {
@@ -16,7 +16,8 @@ class User {
 				"Content-Type": "application/json"	
 			},
 			body: JSON.stringify({
-				username: this.username	
+				username: this.username,	
+				game: game
 			})
 		}).then(function(response) {
 			if (response.ok) {

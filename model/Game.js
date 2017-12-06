@@ -7,7 +7,7 @@ class Game {
 
 	addPlayer() {
 		var name = prompt("Enter your username");
-		var player = new User(name);
+		var player = new User(name, this.name);
 		this.players[this.playerCount] = player;	
 		this.playerCount++;
 
