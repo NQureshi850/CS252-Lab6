@@ -1,9 +1,33 @@
 class Game {
-	constructor(gameName, player1, player2) {
+	constructor(gameName) {
 		this.name = gameName;
-		this.player1 = player1;
-		this.player2 = player2;
-		this.scorePenalty = 0;
+		this.playerCount = 0;
+		this.players = [];
+	}
+
+	addUser() {
+		var name = prompt("Enter your username");
+		var player = new User(name);
+		this.players[this.playerCount] = player;	
+		this.playerCount++;
+
+		console.log("Added User:");
+		console.log(player);
+
+		// Return index of player in this.players
+		return player;
+	}
+
+	addAI() {
+		var ai = new AI();
+		this.players[this.playerCount] = ai;
+		this.playerCount++;
+
+		console.log("Added AI:");
+		console.log(ai);
+
+		// Return index of ai in this.players
+		return ai;
 	}
 
 	start() {
@@ -11,23 +35,35 @@ class Game {
 		console.log("Start Game");
 	}
 
-	end(winner, loser) {
-		console.log("End Game");
-		console.log("winner: " + winner.username);
-		console.log("loser: " + loser.username);
-		if (winner && loser) 
-		{
-			if (winner instanceof User)
-			{
-				winner.updateScore(this.name, this.scorePenalty);
-			}
-			if (loser instanceof User)
-			{
-				loser.updateScore(this.name, -this.scorePenalty);
-			}	
-		}
+	increasePlayerScore(player, scoreChange) {
+		// Test to see if changes are duplicated in this.players
+		player.score = player.score + scoreChange;
+		console.log(player.username + "'s score increased by " + scoreChange + " to new score of " + player.score);  
+		console.log(this.players)
 	}
 
+	decreasePlayerScore(player, scoreChange) {
+		// Test to see if changes are duplicated in this.players
+		player.score = player.score - scoreChange;
+		console.log(player.username + "'s score decreased by " + scoreChange + " to new score of " + player.score);  
+		console.log(this.players)
+	}
 
+	end(winner) {
+		console.log("End Game");
 
+		if (winner) {
+			console.log("winner: " + winner.username);
+			alert(winner.username + " Wins!");
+		}
+
+		// Send score updates to server for each player
+		for (var i in this.players) {
+			var player = this.players[i];
+			console.log(player);
+			if (player instanceof User) {
+				player.updateScore(this.name, player.score);
+			}
+		}
+	}
 }	

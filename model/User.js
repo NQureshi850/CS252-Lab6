@@ -2,13 +2,14 @@ class User {
 	constructor(username) {
 		this.score = 0;
 		this.username = username;
+		this.getUserData = this.getUserData.bind(this);
 		this.getUserData();
 		console.log("Player Created");
 		console.log(this);
 	}
 
 	getUserData() {
-		fetch("http://data.cs.purdue.edu/PLACEHOLDER", {
+		fetch("http://localhost:5001/getUser", {
 			method: "POST",
 			headers: {
 				"Accept": "application/json",
@@ -23,15 +24,16 @@ class User {
 			}
 			throw new Error("Network response was not ok");
 		}).then(function(data) {
-			for (let prop in data) {
-				this.score = user["score"];
-					
+			if (this.username = data.username) {
+
+				this.score = data.score;
+				console.log(this.score);
 			}
-		});
+		}.bind(this));
 	}
 
 	updateScore(gameName, scoreChange) {
-		fetch("http://data.cs.purdue.edu/PLACEHOLDER", {
+		fetch("http://localhost:5001/updateScore", {
 			method: "POST",
 			headers: {
 				"Accept": "application/json",
