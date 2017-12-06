@@ -25,7 +25,7 @@ var gameOver = false;
 var score = 0;
 
 
-class MineJS extends Game{
+class Mine extends Game{
 
 	constructor(player1, player2){
 		super("Mine");

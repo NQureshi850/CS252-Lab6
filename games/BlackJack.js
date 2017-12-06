@@ -33,14 +33,14 @@ var dealerFirstY = 0;
 // number of aces the player has
 var numOfAce = 0;
 
-class BlackJackJS extends Game{
+class BlackJack extends Game{
 
   constructor (player1, player2){
 	super("BlackJack");
 	$( document ).ready(function() {
 		player1 = this.addPlayer();
 		money = player1.score;
-	});
+	}.bind(this));
   }
 
   //to start the game
@@ -54,7 +54,7 @@ class BlackJackJS extends Game{
 	dealerFirstX = 0;
 	dealerFirstY = 0;
 	numOfAce = 0;
-	Bet();
+	this.Bet();
 	document.getElementById("dealerCA").innerHTML = 0;
 	document.getElementById("money").innerHTML = money;
 	var x = document.body.querySelectorAll(".dealer");
@@ -63,13 +63,13 @@ class BlackJackJS extends Game{
 	  x[i].style.backgroundImage = "";
 	  y[i].style.backgroundImage = "";
 	}
-	Deal();
+	this.Deal();
   }
 
   //to deal out the intial cards
   Deal(){
-	var x = GetCardValue();
-	var y = GetCardSuit();
+	var x = this.GetCardValue();
+	var y = this.GetCardSuit();
 	if(x==1){
 	  numOfAce++;
 	}
@@ -84,9 +84,9 @@ class BlackJackJS extends Game{
 	  }
 	}
 	playerCardNum++;
-	ShowCard(x, y, "player");
-	x = GetCardValue();
-	y = GetCardSuit();
+	this.ShowCard(x, y, "player");
+	x = this.GetCardValue();
+	y = this.GetCardSuit();
 	if(x==1){
 	  numOfAce++;
 	}
@@ -101,9 +101,9 @@ class BlackJackJS extends Game{
 	  }
 	}
 	playerCardNum++;
-	ShowCard(x, y, "player");
-	x = GetCardValue();
-	y = GetCardSuit();
+	this.ShowCard(x, y, "player");
+	x = this.GetCardValue();
+	y = this.GetCardSuit();
 	if(x>10){
 	  dealerValue += 10;
 	}
@@ -111,9 +111,9 @@ class BlackJackJS extends Game{
 	  dealerValue += x;
 	}
 	dealerCardNum++;
-	ShowCard(x, y, "dealer");
-	x = GetCardValue();
-	y = GetCardSuit();
+	this.ShowCard(x, y, "dealer");
+	x = this.GetCardValue();
+	y = this.GetCardSuit();
 	if(x>10){
 	  dealerValue += 10;
 	}
@@ -121,15 +121,15 @@ class BlackJackJS extends Game{
 	  dealerValue += x;
 	}
 	dealerCardNum++;
-	ShowCard(x, y, "dealer");
-	Ace();
+	this.ShowCard(x, y, "dealer");
+	this.Ace();
 	document.getElementById("playerCA").innerHTML = playerValue;
   }
 
   //for hit
   Hit(){
-	var x = GetCardValue();
-	var y = GetCardSuit();
+	var x = this.GetCardValue();
+	var y = this.GetCardSuit();
 	if(x==1){
 	  numOfAce++;
 	}
@@ -144,33 +144,33 @@ class BlackJackJS extends Game{
 	  }
 	}
 	playerCardNum++;
-	ShowCard(x, y, "player");
-	Ace();
+	this.ShowCard(x, y, "player");
+	this.Ace();
 	document.getElementById("playerCA").innerHTML = playerValue;
 	if(playerValue > 21){
-	  PlayerLose();
+	  this.PlayerLose();
 	}
   }
 
   //for stop
   Stop(){
-	DealerTurn();
+	this.DealerTurn();
   }
 
   //for dealder's turn
   DealerTurn(){
-	ShowDealerHidden();
+	this.ShowDealerHidden();
 	document.getElementById("dealerCA").innerHTML = dealerValue;
 	while(dealerValue < 17){
-	  DealerHit();
+	  this.DealerHit();
 	}
-	Compare();
+	this.Compare();
   }
 
   //for Dealer Hit
   DealerHit(){
-	var x = GetCardValue();
-	var y = GetCardSuit();
+	var x = this.GetCardValue();
+	var y = this.GetCardSuit();
 	if(x>10){
 	  dealerValue += 10;
 	}
@@ -178,23 +178,23 @@ class BlackJackJS extends Game{
 	  dealerValue += x;
 	}
 	dealerCardNum++;
-	ShowCard(x, y, "dealer");
+	this.ShowCard(x, y, "dealer");
 	document.getElementById("dealerCA").innerHTML = dealerValue;
   }
 
   //to compare
   Compare(){
 	if(dealerValue > 21){
-	  PlayerWin();
+	  this.PlayerWin();
 	}
 	else if(playerValue == dealerValue){
-	  Tie();
+	  this.Tie();
 	}
 	else if(playerValue > dealerValue){
-	  PlayerWin();
+	  this.PlayerWin();
 	}
 	else{
-	  PlayerLose();
+	  this.PlayerLose();
 	}
   }
 
@@ -206,7 +206,7 @@ class BlackJackJS extends Game{
 	  money++;
 	}
 	
-	player1.updateScore("BlackJack", bet);
+	this.increasePlayerScore(player1, bet);
 
 	document.getElementById("money").innerHTML = money;
   }
@@ -216,9 +216,7 @@ class BlackJackJS extends Game{
   PlayerLose(){
 	alert("You Lose");
 	
-	var change = 0;
-	change -= bet;
-	player1.updateScore("BlackJack", change);
+	this.decreasePlayerScore(player1, bet);
 	
 	money -= bet;
 	document.getElementById("money").innerHTML = money;
@@ -638,7 +636,7 @@ class BlackJackJS extends Game{
 		  break;
 		case 9:
 		  switch(y){
-			case 1:bet = prompt("Enter the amount of money you would like to bet\nThe default bet is 10.", 10);
+			case 1:
 			  z[playerCardNum].style.backgroundImage = "url('https://upload.wikimedia.org/wikipedia/commons/2/27/Playing_card_club_9.svg')";
 			  break;
 			case 2:
@@ -710,7 +708,7 @@ class BlackJackJS extends Game{
 		  break;
 		case 13:
 		  switch(y){
-			case 1:bet = prompt("Enter the amount of money you would like to bet\nThe default bet is 10.", 10);
+			case 1:
 			  z[playerCardNum].style.backgroundImage = "url('https://upload.wikimedia.org/wikipedia/commons/2/22/Playing_card_club_K.svg')";
 			  break;
 			case 2:
@@ -836,7 +834,7 @@ class BlackJackJS extends Game{
 			break;
 		  case 4:
 			z[0].style.backgroundImage = "url('https://upload.wikimedia.org/wikipedia/commons/d/d2/Playing_card_spade_6.svg')";
-			break;bet = prompt("Enter the amount of money you would like to bet\nThe default bet is 10.", 10);
+			break;
 		  default:
 			break;
 		}
@@ -902,7 +900,7 @@ class BlackJackJS extends Game{
 			break;
 		  case 2:
 			z[0].style.backgroundImage = "url('https://upload.wikimedia.org/wikipedia/commons/3/34/Playing_card_diamond_10.svg')";
-			break;bet = prompt("Enter the amount of money you would like to bet\nThe default bet is 10.", 10);
+			break;
 		  case 3:
 			z[0].style.backgroundImage = "url('https://upload.wikimedia.org/wikipedia/commons/9/98/Playing_card_heart_10.svg')";
 			break;
@@ -980,7 +978,7 @@ class BlackJackJS extends Game{
 	  }
 	  else{
 		PVA += 1;
-	  }bet = prompt("Enter the amount of money you would like to bet\nThe default bet is 10.", 10);
+	  }
 	}
 	playerValue = PVA + PVNA;
   }
@@ -988,7 +986,7 @@ class BlackJackJS extends Game{
   //places the bet
   Bet(){
 	if(money <= 0){
-	  GameEnd();
+	  this.GameEnd();
 	}
 	bet = 0;
 	bet = prompt("Enter the amount of money you would like to bet\nThe default bet is 10.", 10);
@@ -997,16 +995,16 @@ class BlackJackJS extends Game{
 	}
 	if(bet > money){
 	  alert("You don't have this amount of money");
-	  Bet();
+	  this.Bet();
 	}
   }
 
   //called when the player loses all money
   GameEnd(){
+	this.increasePlayerScore(player1, 100);
+	super.end();
 	alert("You've lost all your money.\nStarting new game.");
 	money = 100;
-	player1.updateScore("BlackJack", 100);
-
   }
 
 }
