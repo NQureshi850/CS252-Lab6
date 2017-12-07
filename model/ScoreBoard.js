@@ -8,7 +8,7 @@ class ScoreBoard {
 	}
 
 	getScores() {
-		fetch("http://data.cs.purdue.edu:5001/getScores", {
+		fetch("http://data.cs.purdue.edu:5001/getScoresForGame", {
 			method: "POST",
 			headers: {
 				"Accept": "application/json",
@@ -24,6 +24,8 @@ class ScoreBoard {
 			throw new Error("Network response was not ok");
 		}).then(function(data) {
 				this.scores = data.scores;
+				console.log(this.game);
+				console.log(this.scores);
 		}.bind(this));
 	}
 }
