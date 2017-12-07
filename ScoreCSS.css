@@ -35,3 +35,37 @@ m2{
   display: block;
   text-align: center;
 }
+
+table{
+  width: 100%;
+  align-self: center;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+  border: 2px solid darkorange;
+  border-collapse: collapse;
+}
+
+tr{
+  border: 2px solid darkorange;
+}
+
+td{
+  border: 2px solid darkorange;
+  height: 20px;
+  vertical-align: middle;
+}
+
+th {
+  background-color: red;
+  text-align: middle;
+  border: 2px solid darkorange;
+  border-collapse: collapse;
+  vertical-align: bottom;
+}
+
+
+
+
+
+
