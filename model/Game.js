@@ -59,7 +59,7 @@ class Game {
 			var player = this.players[i];
 			console.log(player);
 			if (player instanceof User) {
-				player.updateScore(this.name, player.score);
+				player.updateScore(this.name);
 			}
 		}
 	}

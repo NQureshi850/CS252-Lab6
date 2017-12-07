@@ -25,14 +25,16 @@ var gameOver = false;
 var score = 0;
 
 
-class Mine extends Game{
+class Mine extends Game {
 
-	constructor(player1, player2){
+	constructor(){
 		super("Mine");
-		$( document ).ready(function() {
-			player1 = this.addPlayer();
-			score = player1.score;
-		}.bind(this));
+		player1 = this.addPlayer();
+		score = player1.score;
+		console.log("Mine");
+		console.log(player1);
+
+		this.EndGameLose = this.EndGameLose.bind(this);
 	}
 
 	//starting the game and preparing the board

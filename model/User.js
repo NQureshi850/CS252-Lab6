@@ -3,6 +3,7 @@ class User {
 		this.score = 0;
 		this.username = username;
 		this.getUserData = this.getUserData.bind(this);
+		this.updateScore = this.updateScore.bind(this);
 		this.getUserData(gameName);
 		console.log("Player Created");
 		console.log(this);
@@ -25,7 +26,7 @@ class User {
 			}
 			throw new Error("Network response was not ok");
 		}).then(function(data) {
-			if (this.username = data.username) {
+			if (this.username === data.username) {
 
 				this.score = data.score;
 				console.log(this.score);
@@ -33,7 +34,8 @@ class User {
 		}.bind(this));
 	}
 
-	updateScore(gameName, scoreChange) {
+	updateScore(gameName) {
+		console.log(this);
 		fetch("http://localhost:5001/updateScore", {
 			method: "POST",
 			headers: {
@@ -43,7 +45,7 @@ class User {
 			body: JSON.stringify({
 				username: this.username,	
 				game: gameName,
-				score: scoreChange
+				score: this.score
 			})
 		}).then(function(response) {
 			if (response.ok) {

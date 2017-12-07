@@ -48,6 +48,7 @@ class TestGameAI extends Game {
 		}
 	}
 }
-
-var game = new TestGameAI();
-game.start();
+$( document ).ready( function() {
+	var game = new TestGameAI();
+	game.start();
+});
