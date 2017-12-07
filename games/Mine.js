@@ -29,8 +29,12 @@ class Mine extends Game {
 
 	constructor(){
 		super("Mine");
-		player1 = this.addPlayer();
-		score = player1.score;
+		player1 = this.addPlayer(function(player) {
+			player1 = player
+			score = player.score;	
+	  		document.getElementById("score").innerHTML = score;
+		});
+		
 		console.log("Mine");
 		console.log(player1);
 

@@ -1,13 +1,13 @@
 class User {
-	constructor(username, gameName) {
+	constructor(username, gameName, callback) {
 		this.score = 0;
 		this.username = username;
 		this.getUserData = this.getUserData.bind(this);
 		this.updateScore = this.updateScore.bind(this);
-		this.getUserData(gameName);
+		this.getUserData(gameName, callback);
 	}
 
-	getUserData(game) {
+	getUserData(game, callback) {
 		fetch("http://data.cs.purdue.edu:5001/getUser", {
 			method: "POST",
 			headers: {
@@ -24,7 +24,8 @@ class User {
 			}
 			throw new Error("Network response was not ok");
 		}).then(function(data) {
-				this.score = data.score;
+			this.score = data.score;
+			callback(this);
 		}.bind(this));
 	}
 

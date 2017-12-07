@@ -35,12 +35,14 @@ var numOfAce = 0;
 
 class BlackJack extends Game{
 
-  constructor (player1, player2){
+  constructor (){
 	super("BlackJack");
-	$( document ).ready(function() {
-		player1 = this.addPlayer();
+	this.addPlayer( function(player) {
+		player1 = player;
 		money = player1.score;
-	}.bind(this));
+		document.getElementById("money").innerHTML = money;
+		console.log(player1.score);
+	});
   }
 
   //to start the game
@@ -206,8 +208,8 @@ class BlackJack extends Game{
 	  money++;
 	}
 	
-	this.increasePlayerScore(player1, bet);
-
+	this.increasePlayerScore(player1, parseInt(bet));
+	super.end();
 	document.getElementById("money").innerHTML = money;
   }
 
@@ -216,8 +218,8 @@ class BlackJack extends Game{
   PlayerLose(){
 	alert("You Lose");
 	
-	this.decreasePlayerScore(player1, bet);
-	
+	this.decreasePlayerScore(player1, parseInt(bet));
+	super.end();
 	money -= bet;
 	document.getElementById("money").innerHTML = money;
   }
@@ -1001,7 +1003,7 @@ class BlackJack extends Game{
 
   //called when the player loses all money
   GameEnd(){
-	this.increasePlayerScore(player1, 100);
+	this.increasePlayerScore(player1, parseInt(100));
 	super.end();
 	alert("You've lost all your money.\nStarting new game.");
 	money = 100;

@@ -2,7 +2,13 @@ class TestGameAI extends Game {
 	constructor() {
 		super("TestGameAI");		
 		this.scorePenalty = 100; 
-		this.player1 = this.addPlayer();
+		this.player1;
+		this.player1 = this.addPlayer( function(player) {
+			this.player1 = player;
+			console.log("player1");
+			console.log(this.player1);
+			game.start();
+		}.bind(this));
 		this.ai = this.addAI();
 	}
 
@@ -48,7 +54,3 @@ class TestGameAI extends Game {
 		}
 	}
 }
-$( document ).ready( function() {
-	var game = new TestGameAI();
-	game.start();
-});

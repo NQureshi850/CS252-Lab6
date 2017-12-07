@@ -8,7 +8,11 @@
 	<script src="../model/Game.js"></script>
     <script src="BlackJack.js"></script>
 	<script>
-		var game = new BlackJack();
+		var game;
+		$(document).ready( function() { 
+			game = new BlackJack();
+			game.Start();
+		});
 	</script>
   </head>
   <body>

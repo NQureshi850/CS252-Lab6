@@ -5,17 +5,18 @@ class Game {
 		this.players = [];
 	}
 
-	addPlayer() {
+	addPlayer(callback) {
 		var name = prompt("Enter your username");
-		var player = new User(name, this.name);
-		this.players[this.playerCount] = player;	
-		this.playerCount++;
+		var player = new User(name, this.name, function() {
+			this.players[this.playerCount] = player;	
+			this.playerCount++;	
+			// Return index of player in this.players
+			callback(player);
+		}.bind(this));
 
 		console.log("Added User:");
 		console.log(player);
 
-		// Return index of player in this.players
-		return player;
 	}
 
 	addAI() {
@@ -38,7 +39,7 @@ class Game {
 	increasePlayerScore(player, scoreChange) {
 		if (player) {
 			// Test to see if changes are duplicated in this.players
-			player.score = player.score + scoreChange;
+			player.score = parseInt(player.score) + parseInt(scoreChange);
 			console.log(player.username + "'s score increased by " + scoreChange + " to new score of " + player.score);  
 		}
 	}
@@ -46,7 +47,7 @@ class Game {
 	decreasePlayerScore(player, scoreChange) {
 		if (player) {
 			// Test to see if changes are duplicated in this.players
-			player.score = player.score - scoreChange;
+			player.score = player.score - parseInt(scoreChange);
 			console.log(player.username + "'s score decreased by " + scoreChange + " to new score of " + player.score);  
 		}
 	}

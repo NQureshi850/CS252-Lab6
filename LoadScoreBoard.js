@@ -1,6 +1,4 @@
-
-
-$( document ).ready( function() {
+function updateScoreBoard() {
 	var blackjackBoard = new ScoreBoard("BlackJack", function(serverscores) {
 		console.log("scores: ");
 		var usernames = [];
@@ -26,11 +24,8 @@ $( document ).ready( function() {
 				} 
 			}
 		}
-		console.log(serverscores);
-		console.log(usernames);
-		console.log(scores);
 		var BlackJackBoard = document.getElementById("BlackJack");
-		for (var i = 0; i <= 3; i++) {
+		for (var i = 0; i < 3; i++) {
 			var row = BlackJackBoard.rows[i+1];
 			row.cells[1].innerHTML = usernames[i];
 			row.cells[2].innerHTML = scores[i];
@@ -61,12 +56,8 @@ $( document ).ready( function() {
 				} 
 			}
 		}
-		console.log(serverscores);
-		console.log(usernames);
-		console.log(scores);
-		console.log(usernames[0]);
 		var MineSweeperBoard = document.getElementById("Mine");
-		for (var i = 0; i <= 3; i++) {
+		for (var i = 0; i < 3; i++) {
 			var row = MineSweeperBoard.rows[i+1];
 			row.cells[1].innerHTML = usernames[i];
 			row.cells[2].innerHTML = scores[i];
@@ -98,17 +89,17 @@ $( document ).ready( function() {
 				} 
 			}
 		}
-		console.log(serverscores);
-		console.log(usernames);
-		console.log(scores);
 		var TestBoard = document.getElementById("TestGameAI");
-		for (var i = 0; i <= 3; i++) {
+		for (var i = 0; i < 3; i++) {
 			var row = TestBoard.rows[i+1];
 			row.cells[1].innerHTML = usernames[i];
 			row.cells[2].innerHTML = scores[i];
 		}
 	});
+}
 
-	document.getElementById("score");
+$( document ).ready(function() {
+	updateScoreBoard();
+	setInterval(updateScoreBoard, 5000);
 });
-
+	
