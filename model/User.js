@@ -5,8 +5,6 @@ class User {
 		this.getUserData = this.getUserData.bind(this);
 		this.updateScore = this.updateScore.bind(this);
 		this.getUserData(gameName);
-		console.log("Player Created");
-		console.log(this);
 	}
 
 	getUserData(game) {
@@ -26,16 +24,11 @@ class User {
 			}
 			throw new Error("Network response was not ok");
 		}).then(function(data) {
-			if (this.username === data.username) {
-
 				this.score = data.score;
-				console.log(this.score);
-			}
 		}.bind(this));
 	}
 
 	updateScore(gameName) {
-		console.log(this);
 		fetch("http://localhost:5001/updateScore", {
 			method: "POST",
 			headers: {

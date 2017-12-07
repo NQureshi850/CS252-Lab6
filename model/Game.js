@@ -40,7 +40,6 @@ class Game {
 			// Test to see if changes are duplicated in this.players
 			player.score = player.score + scoreChange;
 			console.log(player.username + "'s score increased by " + scoreChange + " to new score of " + player.score);  
-			console.log(this.players)
 		}
 	}
 
@@ -49,7 +48,6 @@ class Game {
 			// Test to see if changes are duplicated in this.players
 			player.score = player.score - scoreChange;
 			console.log(player.username + "'s score decreased by " + scoreChange + " to new score of " + player.score);  
-			console.log(this.players)
 		}
 	}
 
@@ -57,7 +55,6 @@ class Game {
 		// Send score updates to server for each player
 		for (var i in this.players) {
 			var player = this.players[i];
-			console.log(player);
 			if (player instanceof User) {
 				player.updateScore(this.name);
 			}
