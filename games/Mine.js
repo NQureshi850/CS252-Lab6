@@ -301,7 +301,7 @@ class Mine extends Game {
 	  //need to combine with GUI
 	  gameOver = true;
 	  score--;
-	  this.decreasePlayerScore(player1, -1);
+	  this.decreasePlayerScore(player1, 1);
 	  document.getElementById("score").innerHTML = score;
 	  var z = document.body.querySelectorAll(".block");  
 	  minesLoaded = 0;
@@ -312,7 +312,7 @@ class Mine extends Game {
 			this.Open(c, co);
 		  }
 		  else{
-			z[i].style.backgroundImage = "url('http://cdn8.staztic.com/app/i/4449/4449536/mine-rollr-hd-the-endless-minesweeper-1-l-124x124.png')";
+			z[i].style.backgroundImage = "url('../images/mine.png')";
 			var image = new Image();
 			image.onload = function() 
 			{ 
@@ -321,7 +321,7 @@ class Mine extends Game {
 					alert("You lost! Better luck next time."); 
 				}) 
 			}.bind(this);
-			image.src = "http://cdn8.staztic.com/app/i/4449/4449536/mine-rollr-hd-the-endless-minesweeper-1-l-124x124.png";
+			image.src = "../images/mine.png";
 		  }
 		}
 	  }
@@ -341,7 +341,7 @@ class Mine extends Game {
 		  for(var co = 0; co < size; co++){
 			var i = c*size + co;
 			if(board[c][co] == -1){
-			  z[i].style.backgroundImage = "url('http://cdn8.staztic.com/app/i/4449/4449536/mine-rollr-hd-the-endless-minesweeper-1-l-124x124.png')";
+			  z[i].style.backgroundImage = "url('../images/mine.png')";
 			  var image = new Image();
 		  	  image.onload = function() 
 			  { 

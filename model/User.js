@@ -5,12 +5,10 @@ class User {
 		this.getUserData = this.getUserData.bind(this);
 		this.updateScore = this.updateScore.bind(this);
 		this.getUserData(gameName);
-		console.log("Player Created");
-		console.log(this);
 	}
 
 	getUserData(game) {
-		fetch("http://localhost:5001/getUser", {
+		fetch("http://data.cs.purdue.edu:5001/getUser", {
 			method: "POST",
 			headers: {
 				"Accept": "application/json",
@@ -26,17 +24,12 @@ class User {
 			}
 			throw new Error("Network response was not ok");
 		}).then(function(data) {
-			if (this.username === data.username) {
-
 				this.score = data.score;
-				console.log(this.score);
-			}
 		}.bind(this));
 	}
 
 	updateScore(gameName) {
-		console.log(this);
-		fetch("http://localhost:5001/updateScore", {
+		fetch("http://data.cs.purdue.edu:5001/updateScore", {
 			method: "POST",
 			headers: {
 				"Accept": "application/json",
