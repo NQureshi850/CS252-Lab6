@@ -8,7 +8,7 @@ class User {
 	}
 
 	getUserData(game) {
-		fetch("http://data.cs.purdue.edu:5001/getUser", {
+		fetch("http://localhost:5001/getUser", {
 			method: "POST",
 			headers: {
 				"Accept": "application/json",
@@ -29,7 +29,7 @@ class User {
 	}
 
 	updateScore(gameName) {
-		fetch("http://data.cs.purdue.edu:5001/updateScore", {
+		fetch("http://localhost:5001/updateScore", {
 			method: "POST",
 			headers: {
 				"Accept": "application/json",

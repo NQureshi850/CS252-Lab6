@@ -8,7 +8,7 @@ class ScoreBoard {
 	}
 
 	getScores() {
-		fetch("http://data.cs.purdue.edu:5001/getScoresForGame", {
+		fetch("http://localhost:5001/getScoresForGame", {
 			method: "POST",
 			headers: {
 				"Accept": "application/json",
