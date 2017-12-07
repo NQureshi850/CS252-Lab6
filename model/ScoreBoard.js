@@ -1,13 +1,13 @@
 class ScoreBoard {
-	constructor(gameName) {
+	constructor(gameName, callback) {
 		this.game = gameName;
 
 		//Map of {player : score}
 		this.scores;
-		this.getScores();
+		this.getScores(callback);
 	}
 
-	getScores() {
+	getScores(callback) {
 		fetch("http://data.cs.purdue.edu:5001/getScoresForGame", {
 			method: "POST",
 			headers: {
@@ -26,6 +26,11 @@ class ScoreBoard {
 				this.scores = data.scores;
 				console.log(this.game);
 				console.log(this.scores);
+				var score;
+				for (var username in this.scores) {
+					console.log(username + this.scores[username]);
+				}
+				callback(this.scores);
 		}.bind(this));
 	}
 }
