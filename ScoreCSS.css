@@ -1,0 +1,37 @@
+p{
+  font-size: 15px;
+  display: block;
+}
+
+h{
+  font-size: 30px;
+  font-family: "Roboto", sans-serif;
+  color: black;
+  display: block;
+  margin-bottom: 50px;
+}
+
+.section-header{
+  text-align: center;
+}
+
+h2{
+  font-size: 20px;
+  font-family: "Roboto", sans-serif;
+  color: black;
+  display: block;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+m{
+  font-size: 20px;
+  display: block;
+  text-align: center;
+}
+
+m2{
+  font-size: 18px;
+  display: block;
+  text-align: center;
+}
