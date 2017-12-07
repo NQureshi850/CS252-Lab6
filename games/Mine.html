@@ -9,7 +9,11 @@
 	<script src="../model/Game.js"></script>
     <script src="Mine.js"></script>
 	<script>
-		var game = new Mine();
+		var game;
+		$( document ).ready( function(){
+			game = new Mine();
+			game.Start();
+		});
 	</script>
   </head>
   <body>
